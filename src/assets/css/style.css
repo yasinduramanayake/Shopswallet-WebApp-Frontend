@@ -1,0 +1,37 @@
+/* for backgrounds like buttons,etc */
+.bg-primary {
+  background-color: #1d9f78;
+}
+
+.navbar-bg {
+  background-color: #1d9f78;
+}
+
+.breaks1 {
+  
+  padding-top: 10px;
+}
+
+/* for texts within or in backgrounds */
+.text-primary {
+  color: white;
+}
+
+.breaks {
+  padding-top: 50px;
+}
+
+@font-face {
+  font-family: "Eina";
+  src: url("./fonts/Eina.otf");
+}
+
+@font-face {
+  font-family: "Eina Bold";
+  src: url("./fonts/Eina-SemiBold.otf");
+}
+
+@font-face {
+  font-family: "Eina Light";
+  src: url("./fonts/Eina-Light.otf");
+}
