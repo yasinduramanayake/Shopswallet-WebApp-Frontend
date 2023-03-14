@@ -129,7 +129,40 @@
         
       </div>
 
-      <div class="flex flex-col mx-auto mt-8 rounded md:mt-20">
+      <div class="row mx-auto mt-8 rounded md:mt-20">
+        <div class="col-6 p-3 md:p-8 bg-green-50">
+          <div class="items-center w-full">
+            <div class="card" style="min-height: 310px;">
+              <div class="card-body text-center flex flex-col items-center justify-center">
+                <img src="/img/storefront.png" class="w-24 mx-auto md:w-32" alt=""/>
+                <div class="font-medium mt-3">{{ $t("landingpageSellerHeader") }}</div>
+                <p class="my-3 text-gray-500">
+                  {{ $t("landingpageSellerSubHeader") }}
+                </p>
+                <a class="px-3 py-2 text-white bg-green-400 rounded-md shadow-sm hover:text-gray-600" target="__blank" :href="`${this.$store.state.baseUrl}register#vendor`">{{ $t("landingpageSellerButton") }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 p-3 md:p-8 bg-green-50">
+          <div class="items-center w-full">
+            <div class="card" style="min-height: 310px;">
+              <div class="card-body text-center flex flex-col items-center justify-center">
+                <img src="/img/delivery-rider.png" class="w-24 mx-auto md:w-32" alt=""/>
+                <div class="font-medium mt-3">
+                  {{ $t("landingpageRide.landingpageRiderHeader") }}
+                </div>
+                <div class="my-3 text-gray-500">
+                  {{ $t("landingpageRide.landingpageRiderSubHeader") }}
+                </div>
+                <a class="px-3 py-2 text-white bg-green-400 rounded-md shadow-sm hover:text-gray-600" target="__blank" :href="`${this.$store.state.baseUrl}register#driver`">{{ $t("landingpageSellerButton") }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="flex flex-col mx-auto mt-8 rounded md:mt-20">
         <div class="flex p-3 md:justify-between md:p-8 bg-green-50">
           <div
             class="flex flex-col items-center justify-center w-full lg:w-112"
@@ -153,7 +186,7 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="mt-8 md:mt-20" id="services"  style="
          
          padding-left: 20px;
@@ -166,11 +199,11 @@
           Your favourite online food delivery partner
         </p> -->
         <div
-          class="grid gap-4 text-center md:grid-cols-2 lg:grid-cols-4"
+          class="grid gap-4 text-center md:grid-cols-2 lg:grid-cols-4 pb-5"
           v-if="settings"
         >
           <div
-            class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full"
+            class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full mb-4"
             :style="{ 'background-color': settings.colors.accentColor }"
           >
             <img src="/img/order1.png" class="h-12 mx-auto" />
@@ -183,7 +216,7 @@
             </p> -->
           </div>
           <div
-            class="p-2 text-center rounded-md lg:w-full justify-content-center"
+            class="p-2 text-center rounded-md lg:w-full justify-content-center mb-4"
             :style="{ 'background-color': settings.colors.accentColor }"
           >
             <img src="/img/delivery-truck.png" class="h-12 mx-auto" />
@@ -196,7 +229,7 @@
             </p> -->
           </div>
           <div
-            class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full"
+            class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full mb-4"
             :style="{ 'background-color': settings.colors.accentColor }"
           >
             <img src="/img/quality.png" class="h-12 mx-auto" />
@@ -208,7 +241,7 @@
             </p> -->
           </div>
           <div
-            class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full"
+            class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full mb-4"
             :style="{ 'background-color': settings.colors.accentColor }"
           >
             <img src="/img/payment.png" class="h-12 mx-auto" />
@@ -221,7 +254,7 @@
           </div>
         </div>
       </div>
-      <div class="flex flex-col mx-auto mt-8 rounded-md md:mt-20">
+      <!-- <div class="flex flex-col mx-auto mt-8 rounded-md md:mt-20">
         <div class="flex p-3 md:justify-between md:p-8 bg-green-50">
           <div
             class="flex flex-col items-center justify-center w-full lg:w-112"
@@ -247,7 +280,7 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!-- <div class="flex" v-if="settings">
