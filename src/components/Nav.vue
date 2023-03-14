@@ -6,7 +6,7 @@
     <div class="container px-5 mx-auto max-w-7xl">
       <div class="flex items-center justify-between h-12 md:h-16">
         <div class="flex items-center flex-shrink-0 " v-if="settings" >
-          <a href="/">
+          <a href="/"    style="text-decoration: none">
             <p class="text-xl font-bold text-black md:text-2xl">ShopsWallet</p>
           </a>
         </div>
@@ -42,7 +42,7 @@
                 </a>
               </span>
               <span v-show="!isLoggedIn" class="flex mx-2">
-                <a href="/login" class="px-2 py-1 font-medium text-black bg-gray-100 rounded-full md:px-3 md:py-2">
+                <a   style="text-decoration: none" href="/login"   class="px-2 py-1 font-medium text-black bg-gray-100 rounded-full md:px-3 md:py-2">
                   {{ $t('nav.login') }}
                   <!-- <UserCircleIcon class="self-center w-5 h-5 text-black" aria-hidden="true" /> -->
                 </a>
