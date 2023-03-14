@@ -251,11 +251,11 @@
           Your favourite online food delivery partner
         </p> -->
           <div
-            class="grid gap-4 text-center md:grid-cols-2 lg:grid-cols-4 pb-5"
+            class="grid gap-4 text-center md:grid-cols-2 lg:grid-cols-4"
             v-if="settings"
           >
             <div
-              class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full mb-4"
+              class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full"
               :style="{ 'background-color': settings.colors.accentColor }"
             >
               <img src="/img/order1.png" class="h-12 mx-auto" />
@@ -268,7 +268,7 @@
             </p> -->
             </div>
             <div
-              class="p-2 text-center rounded-md lg:w-full justify-content-center mb-4"
+              class="p-2 text-center rounded-md lg:w-full justify-content-center"
               :style="{ 'background-color': settings.colors.accentColor }"
             >
               <img src="/img/delivery-truck.png" class="h-12 mx-auto" />
@@ -281,7 +281,7 @@
             </p> -->
             </div>
             <div
-              class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full mb-4"
+              class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full"
               :style="{ 'background-color': settings.colors.accentColor }"
             >
               <img src="/img/quality.png" class="h-12 mx-auto" />
@@ -293,7 +293,7 @@
             </p> -->
             </div>
             <div
-              class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full mb-4"
+              class="flex flex-col items-center justify-center p-2 rounded-md lg:w-full"
               :style="{ 'background-color': settings.colors.accentColor }"
             >
               <img src="/img/payment.png" class="h-12 mx-auto" />
