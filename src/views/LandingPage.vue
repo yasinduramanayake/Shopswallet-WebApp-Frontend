@@ -141,12 +141,9 @@
         </div>
 
         <div class="row mx-auto mt-8 rounded md:mt-20">
-          <div
-            class="col-md-6 p-3 md:p-8 bg-green-50"
-            style="background-color: #0f2133"
-          >
+          <div class="col-md-4 p-3 md:p-8 bg-green-50" style="background-color: #0f2133">
             <div class="items-center w-full">
-              <div class="card" style="min-height: 310px">
+              <div class="card" style="min-height: 325px;">
                 <div
                   class="card-body text-center flex flex-col items-center justify-center"
                 >
@@ -170,12 +167,9 @@
               </div>
             </div>
           </div>
-          <div
-            class="col-md-6 p-3 md:p-8 bg-green-50"
-            style="background-color: #0f2133"
-          >
+          <div class="col-md-4 p-3 md:p-8 bg-green-50" style="background-color: #0f2133">
             <div class="items-center w-full">
-              <div class="card" style="min-height: 310px">
+              <div class="card" style="min-height: 325px;">
                 <div
                   class="card-body text-center flex flex-col items-center justify-center"
                 >
@@ -189,6 +183,32 @@
                   </div>
                   <div class="my-3 text-gray-500">
                     {{ $t("landingpageRide.landingpageRiderSubHeader") }}
+                  </div>
+                  <button
+                    class="px-3 py-2 text-white bg-green-400 rounded-md shadow-sm hover:text-gray-600"
+                  >
+                    {{ $t("landingpageSellerButton") }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 p-3 md:p-8 bg-green-50" style="background-color: #0f2133">
+            <div class="items-center w-full">
+              <div class="card" style="min-height: 325px;">
+                <div
+                  class="card-body text-center flex flex-col items-center justify-center"
+                >
+                  <img
+                    src="/img/chef.png"
+                    class="w-24 mx-auto md:w-32"
+                    alt=""
+                  />
+                  <div class="font-medium mt-3">
+                    {{ $t("landingpageEmployee.landingpageEmployeeHeader") }}
+                  </div>
+                  <div class="my-3 text-gray-500">
+                    {{ $t("landingpageEmployee.landingpageEmployeeSubHeader") }}
                   </div>
                   <button
                     class="px-3 py-2 text-white bg-green-400 rounded-md shadow-sm hover:text-gray-600"
@@ -441,6 +461,4 @@ export default {
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-
-
 </style>
