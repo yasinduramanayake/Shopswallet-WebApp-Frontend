@@ -24,6 +24,23 @@
     "header": "Make your online shop easier with our mobile app",
     "subHeader": "makes online food, grocery, parcel delivery and pharmacy shopping fast and easy. Get groceries delivered and order your favourite foods from the best vendors."
   },
+  "BecomeAseller": {
+    "Header": "Everything you need to start selling online!",
+    "SubHeader": "IT'S MADE FOR YOU",
+    "Button": "Start Selling",
+    "Tab1Header": "Benefits",
+    "Tab1ContentHeader": "Benefits",
+    "Tab1ContentSubHeader": "Selling online has never been easier.",
+    "Tab1ContentRow1Header": "Start Selling in Minutes",
+    "Tab1ContentRow1Content": "Get straight to growing your business. We handle everything to sell online. So you can focus on your business rather managing the infrastructure.",
+    "Tab1ContentRow2Header": "Comprehensive Dashboard",
+    "Tab1ContentRow2Content": "Get a holistic and detailed view of your business to better understand sales, orders, and customers to better tailor your products.",
+    "Tab1ContentRow3Header": "Get Paid Directly and Securely",
+    "Tab1ContentRow3Content": "We don't keep your money! The payment goes to you directly as soon as a buyer pays.",
+    "Tab2Header": "How It Works",
+    "Tab3Header": "FAQ"
+  },
+  
   "footer": {
     "header1": "Company",
     "sub1": "Contact Us",

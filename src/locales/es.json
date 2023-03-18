@@ -20,6 +20,23 @@
     "header": "Haz tu tienda online más fácil con nuestra aplicación móvil",
     "subHeader": "hace que las compras en línea de alimentos, abarrotes, entrega de paquetes y farmacia sean rápidas y fáciles. Obtenga comestibles entregados y ordene sus comidas favoritas de los mejores proveedores."
   },
+  "BecomeAseller": {
+    "Header": "¡Todo lo que necesitas para empezar a vender en línea!",
+    "SubHeader": "HECHO PARA TI",
+    "Button": "Comenzar a vender",
+    "Tab1Header": "Beneficios",
+    "Tab1ContentHeader": "Beneficios",
+    "Tab1ContentSubHeader": "Vender en línea nunca ha sido tan fácil.",
+    "Tab1ContentRow1Header": "Comienza a vender en minutos",
+    "Tab1ContentRow1Content": "Empieza a hacer crecer tu negocio sin demoras. Nosotros nos encargamos de todo lo necesario para vender en línea, para que puedas concentrarte en tu negocio en lugar de administrar la infraestructura.",
+    "Tab1ContentRow2Header": "Panel de control completo",
+    "Tab1ContentRow2Content": "Obtén una vista holística y detallada de tu negocio para comprender mejor las ventas, los pedidos y los clientes, y así poder adaptar mejor tus productos.",
+    "Tab1ContentRow3Header": "Cobros directos y seguros",
+    "Tab1ContentRow3Content": "¡No retenemos tu dinero! El pago se te envía directamente en cuanto el comprador realiza la transacción.",
+    "Tab2Header": "Cómo funciona",
+    "Tab3Header": "Preguntas frecuentes"
+  },
+
   "footer": {
     "header1": "Empresa",
     "sub1": "Contacta con nosotras",
