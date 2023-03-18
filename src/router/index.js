@@ -18,6 +18,7 @@ import Search from '../components/Search.vue'
 import NotFound from '../views/404.vue'
 import Category from '../views/Category.vue'
 import OrderDetails from '../views/OrderDetails.vue'
+import BecomeASeller from '../views/BecomeASeller.vue'
 // import PackageType from '../components/PackageType.vue'
 // import PackageParameter from '../components/parcel/PackageParameter.vue'
 // import Summary from '../components/parcel/Summary.vue'
@@ -299,6 +300,11 @@ const routes = [
     path: '/:pathMatch(.*)*',
     name: 'Not Found',
     component: NotFound,
+  },
+  {
+    path: '/become-a-seller',
+    name: 'Become A Seller',
+    component: BecomeASeller,
   },
  
 ]

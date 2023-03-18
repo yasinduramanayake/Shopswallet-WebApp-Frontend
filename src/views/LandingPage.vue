@@ -158,11 +158,9 @@
                   <p class="my-3 text-gray-500">
                     {{ $t("landingpageSellerSubHeader") }}
                   </p>
-                  <button
-                    class="px-3 py-2 text-white bg-green-400 rounded-md shadow-sm hover:text-gray-600"
-                  >
+                  <a href="/become-a-seller" class="px-3 py-2 text-white bg-green-400 rounded-md shadow-sm hover:text-gray-600 text-decoration-none">
                     {{ $t("landingpageSellerButton") }}
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
