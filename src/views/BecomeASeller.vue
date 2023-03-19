@@ -72,14 +72,14 @@
   							</div>
   						</div>
   						<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-  							<h2 class="text-center text-uppercase mt-4">{{ $t("BecomeAseller.Tab2Header") }}</h2>
-  							<div class="text-center text-muted fst-italic mb-5">{{ $t("BecomeAseller.Tab2SubHeader") }}</div>
+  							<h2 class="text-center text-uppercase mt-4">{{ $t("BecomeAseller.Tab2ContentHeader") }}</h2>
+  							<div class="text-center text-muted fst-italic mb-5">{{ $t("BecomeAseller.Tab2ContentSubHeader") }}</div>
 
   							<div class="row">
   								<div class="col-4 text-end" style="margin-bottom: 150px;">
-  									<h5>Sell & Fulfill Orders</h5>
+  									<h5>{{ $t("BecomeAseller.Tab2Contentlistitem1Header") }} </h5>
   									<div class="text-end text-muted">
-  										After you list your offers, customers can visit them on the Marketplace. We'll notify you when customers place an order. Fulfill the order on promised time is very important.
+										{{ $t("BecomeAseller.Tab2Contentlistitem1Content ") }} 
   									</div>
   								</div>
   								<div class="col-4 d-flex justify-content-center" style="margin-bottom: 150px;">
@@ -96,9 +96,9 @@
   									<div class="rounded-circle" style="background-image: url('/img/time_line_step_2.png'); height: 170px; width: 170px; background-repeat: no-repeat; background-position: center; background-size: contain; border: 7px solid #f1f1f1;"></div>
   								</div>
   								<div class="col-4 text-start" style="margin-bottom: 150px;">
-  									<h5>List Your Items</h5>
+  									<h5>{{ $t("BecomeAseller.Tab2Contentlistitem2Header") }}  </h5>
   									<div class="text-start text-muted">
-  										Listing your products is really simple through our easy to use the self-serve portal. Upload including high-quality product images and additional details.
+										{{ $t("BecomeAseller.Tab2Contentlistitem2Content") }} 
   									</div>
   								</div>
   							</div>

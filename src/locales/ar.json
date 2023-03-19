@@ -38,7 +38,6 @@
     "copyright2": "جميع الحقوق محفوظة"
   },
 
-  
   "BecomeAseller": {
     "Header": "كل ما تحتاجه للبدء في البيع عبر الإنترنت!",
     "SubHeader": "مصممة خصيصًا لك",
@@ -53,7 +52,14 @@
     "Tab1ContentRow3Header": "احصل على المدفوعات مباشرة وبشكل آمن",
     "Tab1ContentRow3Content": "نحن لا نحتفظ بأموالك! تذهب المدفوعات مباشرة إليك فور دفع المشتري.",
     "Tab2Header": "كيف يعمل",
-    "Tab2SubHeader": "من الجيد معرفة كيفية عمل النظام قبل التسجيل",
+    "Tab2ContentHeader": "كيف يعمل النظام",
+    "Tab2ContentSubHeader": "من الجيد معرفة كيف يعمل النظام قبل التسجيل.",
+    "Tab2Contentlistitem1Header": "بيع وإنجاز الطلبات",
+    "Tab2Contentlistitem1Content": "بعد عرض عروضك، يمكن للعملاء زيارتها على المتجر. سنعلمك عندما يقوم العملاء بطلب الطلب. إنجاز الطلب في الوقت المحدد هو أمر مهم جدًا.",
+    "Tab2Contentlistitem2Header": "عرض عناصرك",
+    "Tab2Contentlistitem2Content": "يعد عرض منتجاتك سهلاً حقًا من خلال بوابة الخدمة الذاتية السهلة الاستخدام لدينا. تحميل الصور عالية الجودة للمنتجات والتفاصيل الإضافية.",
+    "Tab2ContentRow3Header": "Get Paid Directly and Securely",
+    "Tab2ContentRow3Content": "We don't keep your money! The payment goes to you directly as soon as a buyer pays.",
     "Tab3Header": "الأسئلة الشائعة"
   },
   "cookieText": "نستخدم ملفات تعريف الارتباط لتحسين تجربتك على موقعنا الإلكتروني. عن طريق تصفح هذا الموقع الإلكتروني، فإنك توافق على استخدامنا لملفات تعريف الارتباط.",

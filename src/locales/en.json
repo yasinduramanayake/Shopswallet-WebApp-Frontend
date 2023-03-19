@@ -1,5 +1,5 @@
 {
-  "SiteTitle" : "TiendasCartera",
+  "SiteTitle": "TiendasCartera",
   "landingpageLeft": "makes online food, grocery, parcel delivery and pharmacy shopping fast and easy. Get groceries delivered and order your favourite foods from the best vendors.",
   "landingpageHeader": "Everything you need, delivered now",
   "landingpageSubHeader": "Order food online, get groceries delivered, and shop online with the best grocery store in your area.",
@@ -11,7 +11,7 @@
   "landingpageSellerFeat2": "fast delivery",
   "landingpageSellerFeat3": "Best quality",
   "landingpageSellerFeat4": "lots of payment methods",
-  "ChooseaService" : "Choose a service",
+  "ChooseaService": "Choose a service",
   "landingpageRide": {
     "landingpageRiderHeader": "Ride With Us",
     "landingpageRiderSubHeader": "Register as a rider and earn money by riding with us."
@@ -38,10 +38,17 @@
     "Tab1ContentRow3Header": "Get Paid Directly and Securely",
     "Tab1ContentRow3Content": "We don't keep your money! The payment goes to you directly as soon as a buyer pays.",
     "Tab2Header": "How It Works",
-    "Tab2SubHeader": "It's Good To Know How The System Works, Before You Register",
+    "Tab2ContentHeader": "How It Works",
+    "Tab2ContentSubHeader": "It's Good To Know How The System Works, Before You Register.",
+    "Tab2Contentlistitem1Header": "Sell & Fulfill Orders",
+    "Tab2Contentlistitem1Content": "After you list your offers, customers can visit them on the Marketplace. We'll notify you when customers place an order. Fulfill the order on promised time is very important.",
+    "Tab2Contentlistitem2Header": "List Your Items",
+    "Tab2Contentlistitem2Content": "Listing your products is really simple through our easy to use the self-serve portal. Upload including high-quality product images and additional details.",
+    "Tab2ContentRow3Header": "Get Paid Directly and Securely",
+    "Tab2ContentRow3Content": "We don't keep your money! The payment goes to you directly as soon as a buyer pays.",
     "Tab3Header": "FAQ"
   },
-  
+
   "footer": {
     "header1": "Company",
     "sub1": "Contact Us",
@@ -201,9 +208,9 @@
     "distance": "Distance",
     "deliveryCharges": "Delivery Charges",
     "packageSizeCharges": "Package Size Charges",
-    "recipientTitle" : "Recipient",
-"recipientEmptyName" : "Recipient name is required",
-"recipientEmptyPhone" : "Recipient phone number is required"
+    "recipientTitle": "Recipient",
+    "recipientEmptyName": "Recipient name is required",
+    "recipientEmptyPhone": "Recipient phone number is required"
   },
 
   "checkout": {
@@ -223,8 +230,8 @@
   "profile": {
     "personalInformation": "Personal Information",
     "Hello": "Hello",
-   "passwordChange": "Password Change",
-   "oldPassword": "Old Password",
+    "passwordChange": "Password Change",
+    "oldPassword": "Old Password",
     "newPassword": "New Password",
     "confirmPassword": "Confirm Password",
     "updatePassword": "Update Password",
