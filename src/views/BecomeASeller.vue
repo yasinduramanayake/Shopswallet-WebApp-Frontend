@@ -71,7 +71,47 @@
   								</div>
   							</div>
   						</div>
-  						<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">How It Works</div>
+  						<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+  							<section>
+							  	<div class="container py-5">
+							    	<div class="main-timeline-2">
+							      		<div class="timeline-2 left-2">
+							        		<div>
+							        			<h5 class="text-end">Register as Merchant</h5>
+							          			<div class="text-end text-muted">
+							            			Creating an account is very simple, Your merchant dashboard will be ready as soon as you're registered. You can manage everything that belongs to your store and running the business.
+							          			</div>
+							        		</div>
+							      		</div>
+								      	<div class="timeline-2 right-2">
+								        	<div>
+								        		<h5 class="text-start">List Your Items</h5>
+								          		<div class="text-start text-muted">
+								            		Listing your products is really simple through our easy to use the self-serve portal. Upload including high-quality product images and additional details.
+								          		</div>
+								        	</div>
+								      	</div>
+								      	<div class="timeline-2 left-2">
+								        	<div>
+								        		<h5 class="text-end">Sell & Fulfill Orders</h5>
+								          		<div class="text-end text-muted">
+								            		After you list your offers, customers can visit them on the Marketplace. We'll notify you when customers place an order. Fulfill the order on promised time is very important.
+								          		</div>
+								        	</div>
+								      	</div>
+								      	<div class="timeline-2 right-2">
+								        	<div>
+								        		<h5 class="text-start">Get Paid Instantly</h5>
+								          		<div class="text-start text-muted">
+								            		We don't hold your money, the payment will be sent to your connected account directly.
+								          		</div>
+								        	</div>
+								      	</div>
+								      	<div class="timeline-2 left-2"></div>
+							    	</div>
+							  	</div>
+							</section>
+  						</div>
   						<div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">FAQ</div>
 					</div>
 				</div>
@@ -134,5 +174,121 @@
 	    border-bottom: 3px solid !important;
 	    font-size: 16px;
 	    font-weight: bold;
+	}
+
+	/* The actual timeline (the vertical ruler) */
+	.main-timeline-2 {
+	  position: relative;
+	}
+
+	/* The actual timeline (the vertical ruler) */
+	.main-timeline-2::after {
+	  content: "";
+	  position: absolute;
+	  width: 3px;
+	  background-color: #26c6da;
+	  top: 0;
+	  bottom: 0;
+	  left: 50%;
+	  margin-left: -3px;
+	}
+
+	/* Container around content */
+	.timeline-2 {
+	  position: relative;
+	  background-color: inherit;
+	  width: 50%;
+	}
+
+	/* The circles on the timeline */
+	.timeline-2::after {
+	  content: "";
+	  position: absolute;
+	  width: 170px;
+	  height: 170px;
+	  right: -85px;
+	  background-color: #26c6da;
+	  top: 15px;
+	  border-radius: 50%;
+	  z-index: 1;
+	}
+
+	/* Place the container to the left */
+	.left-2 {
+	  padding: 25px 110px 20px 0px;
+	  left: 0;
+	}
+
+	/* Place the container to the right */
+	.right-2 {
+	  padding: 0px 0px 20px 40px;
+	  left: 50%;
+	}
+
+	/* Add arrows to the left container (pointing right) */
+	.left-2::before {
+	  content: " ";
+	  position: absolute;
+	  top: 18px;
+	  z-index: 1;
+	  right: 30px;
+	  border: medium solid white;
+	  border-width: 10px 0 10px 10px;
+	  border-color: transparent transparent transparent white;
+	}
+
+	/* Add arrows to the right container (pointing left) */
+	.right-2::before {
+	  content: " ";
+	  position: absolute;
+	  top: 18px;
+	  z-index: 1;
+	  left: 30px;
+	  border: medium solid white;
+	  border-width: 10px 10px 10px 0;
+	  border-color: transparent white transparent transparent;
+	}
+
+	/* Fix the circle for containers on the right side */
+	.right-2::after {
+	  left: -14px;
+	}
+
+	/* Media queries - Responsive timeline on screens less than 600px wide */
+	@media screen and (max-width: 600px) {
+	  /* Place the timelime to the left */
+	  .main-timeline-2::after {
+	    left: 31px;
+	  }
+
+	  /* Full-width containers */
+	  .timeline-2 {
+	    width: 100%;
+	    padding-left: 70px;
+	    padding-right: 25px;
+	  }
+
+	  /* Make sure that all arrows are pointing leftwards */
+	  .timeline-2::before {
+	    left: 60px;
+	    border: medium solid white;
+	    border-width: 10px 10px 10px 0;
+	    border-color: transparent white transparent transparent;
+	  }
+
+	  /* Make sure all circles are at the same spot */
+	  .left-2::after,
+	  .right-2::after {
+	    left: 18px;
+	  }
+
+	  .left-2::before {
+	    right: auto;
+	  }
+
+	  /* Make all right containers behave like the left ones */
+	  .right-2 {
+	    left: 0%;
+	  }
 	}
 </style>
