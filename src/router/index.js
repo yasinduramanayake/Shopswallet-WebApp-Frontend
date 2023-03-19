@@ -19,6 +19,8 @@ import NotFound from '../views/404.vue'
 import Category from '../views/Category.vue'
 import OrderDetails from '../views/OrderDetails.vue'
 import BecomeASeller from '../views/BecomeASeller.vue'
+import RideWithUs from '../views/RideWithUs.vue'
+import BecomeAEmployee from '../views/BecomeAEmployee.vue'
 // import PackageType from '../components/PackageType.vue'
 // import PackageParameter from '../components/parcel/PackageParameter.vue'
 // import Summary from '../components/parcel/Summary.vue'
@@ -305,6 +307,16 @@ const routes = [
     path: '/become-a-seller',
     name: 'Become A Seller',
     component: BecomeASeller,
+  },
+  {
+    path: '/ride-with-us',
+    name: 'Ride With Us',
+    component: RideWithUs,
+  },
+  {
+    path: '/become-a-employee',
+    name: 'Become A Employee',
+    component: BecomeAEmployee,
   },
  
 ]

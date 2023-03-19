@@ -182,11 +182,9 @@
                   <div class="my-3 text-gray-500">
                     {{ $t("landingpageRide.landingpageRiderSubHeader") }}
                   </div>
-                  <button
-                    class="px-3 py-2 text-white bg-green-400 rounded-md shadow-sm hover:text-gray-600"
-                  >
+                  <a href="/ride-with-us" class="px-3 py-2 text-white bg-green-400 rounded-md shadow-sm hover:text-gray-600 text-decoration-none">
                     {{ $t("landingpageSellerButton") }}
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -208,11 +206,9 @@
                   <div class="my-3 text-gray-500">
                     {{ $t("landingpageEmployee.landingpageEmployeeSubHeader") }}
                   </div>
-                  <button
-                    class="px-3 py-2 text-white bg-green-400 rounded-md shadow-sm hover:text-gray-600"
-                  >
+                  <a href="/become-a-employee" class="px-3 py-2 text-white bg-green-400 rounded-md shadow-sm hover:text-gray-600 text-decoration-none">
                     {{ $t("landingpageSellerButton") }}
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
