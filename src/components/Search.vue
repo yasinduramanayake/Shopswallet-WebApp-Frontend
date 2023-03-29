@@ -1,7 +1,10 @@
 <template>
-  <div class="container flex flex-col px-5 mx-auto md:max-w-6xl" v-if="products">
+  <div
+    class="container flex flex-col  mx-auto md:max-w-6xl search-page"
+    v-if="products"
+  >
     <div v-if="products.length <= 0">
-        <p class="mt-5">No Products or vendors</p>
+      <p class="mt-5">No Products or vendors</p>
     </div>
     <div v-else class="flex flex-col w-full py-5">
       <div class="flex p-3 mt-2 bg-white rounded-md shadow">
@@ -21,10 +24,13 @@
           />
         </div>
       </div>
-      <div class="flex flex-row py-5 mx-auto space-x-5 md:py-8 md:space-x-24">
+      <div
+        class="flex flex-row py-5 mx-auto space-x-5 md:py-8 md:space-x-24 search-tab-content"
+      >
         <div class="">
           <a
             @click="getAllProducts"
+            :class="[$route.query.tab == 'products' ? 'active' : '']"
             class="text-center cursor-pointer hover:underline hover:text-gray-500"
             >Products</a
           >
@@ -32,6 +38,7 @@
         <div class="">
           <a
             @click="getAllVendors"
+            :class="[$route.query.tab == 'vendors' ? 'active' : '']"
             class="text-center cursor-pointer hover:underline hover:text-gray-500"
             >Vendors</a
           >
@@ -44,22 +51,39 @@
             :href="`vendor/${vendor.id}/` + sanitizeTitle(`${vendor.name}`)"
             v-for="vendor in vendors"
             :key="vendor.id"
-            class="flex flex-row items-center p-2 rounded-md shadow-md bg-gray-50 md:w-82 h-28"
+            class="flex flex-row items-center p-2 rounded-md shadow-md bg-blue-50 h-28 text-decoration-none cards border-b-4 border-blue-800"
           >
-            <img  v-if="vendor" v-bind:src="vendor.feature_image" class="self-center w-16 h-16 rounded-full ">
+            <img
+              v-if="vendor"
+              v-bind:src="vendor.feature_image"
+              class="self-center w-16 h-16 rounded-full ml-6"
+            />
             <div class="ml-5">
-                <p class="mt-2 mb-1 font-semibold truncate">{{ vendor.name }}</p>
-                <p class="text-xs text-black" v-if="vendor.address">{{ truncate(vendor.address, 50) }}</p>
-                <div class="flex items-center mt-1" v-if="settings">
-                    <ClockIcon class="w-4 h-4 mr-1" :style="{ 'color': settings.colors.deliveredColor }" aria-hidden="true" />
-                    <p class="text-xs font-light" :style="{ 'color': settings.colors.deliveredColor }">{{ vendor.prepare_time}} mins</p>
-                </div>
+              <p class="mt-2 mb-1 font-semibold truncate text-2xl text-blue-900 capitalize">{{ vendor.name }}</p>
+              <p class="text-xs text-black capitalize mb-2" v-if="vendor.address">
+                {{ truncate(vendor.address, 50) }}
+              </p>
+              <div class="flex items-center mt-1" v-if="settings">
+                <ClockIcon
+                  class="w-4 h-4 mr-1"
+                  :style="{ color: settings.colors.deliveredColor }"
+                  aria-hidden="true"
+                />
+                <p
+                  class="text-xs font-light mb-0"
+                  :style="{ color: settings.colors.deliveredColor }"
+                >
+                  {{ vendor.prepare_time }} mins
+                </p>
+              </div>
             </div>
           </a>
         </div>
       </div>
       <div v-else>
-        <div class="grid gap-6 place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div
+          class="grid gap-6 place-items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 search-item-box"
+        >
           <router-link
             :to="{
               name: 'Product',
@@ -67,18 +91,21 @@
             }"
             v-for="product in products"
             :key="product.id"
-            class="w-60 h-80"
+            class="box-inner"
           >
-            <img
-              v-if="product"
-              v-bind:src="product.photo"
-              class="w-56 h-56 mx-auto transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-100 rounded-t-xl"
-            />
+            <div class="overlay-effect">
+              <img
+                v-if="product"
+                v-bind:src="product.photo"
+                class="w-56 h-56 mx-auto rounded-t-xl overlay-image"
+              />
+              <div class="overlay-text">Add to cart</div>
+            </div>
             <div class="p-3">
-              <span v-if="product.discount_price > 0">
+              <span v-if="product.discount_price > 0" class="price-text">
                 <p class="text-sm font-medium text-black">
                   {{ currency
-                  }}<span class="mr-1">{{
+                  }} <span class="mr-1">{{
                     product.discount_price.toFixed(1)
                   }}</span>
                   <span class="text-xs line-through">{{
@@ -86,17 +113,19 @@
                   }}</span>
                 </p>
               </span>
-              <span v-else>
+              <span v-else class="price-text">
                 <p class="text-sm font-medium text-black">
                   {{ currency }}{{ product.price.toFixed(2) }}
                 </p>
               </span>
-              <p class="font-light truncate">{{ truncate(product.name, 25) }}</p>
+              <p class="font-light truncate product-name">
+                {{ truncate(product.name, 25) }}
+              </p>
               <div class="" v-if="product.available_qty > 0">
-                <p class="text-xs font-medium">Instock</p>
+                <p class="text-s font-medium bg-green-800 text-white py-1 rounded-xl">Instock</p>
               </div>
               <div v-else>
-                <p class="text-xs font-medium">Out of stock</p>
+                <p class="text-s font-medium bg-yellow-800 text-white py-1 rounded-xl">Out of stock</p>
               </div>
             </div>
           </router-link>
@@ -173,7 +202,12 @@
 <script>
 import axios from "axios";
 import { SearchIcon } from "@heroicons/vue/outline";
-import { StarIcon, ClockIcon, ChevronLeftIcon, ChevronRightIcon} from "@heroicons/vue/solid";
+import {
+  StarIcon,
+  ClockIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@heroicons/vue/solid";
 import Download from "@/components/Downloads.vue";
 export default {
   name: "Vendors",
@@ -206,23 +240,24 @@ export default {
   },
 
   mounted() {
-      
-    axios.get(this.base_url + "api/app/settings")
-    .then((response) => {
-      this.settings = response.data;
-    })
-    .catch((error) => console.log(error));
+    axios
+      .get(this.base_url + "api/app/settings")
+      .then((response) => {
+        this.settings = response.data;
+      })
+      .catch((error) => console.log(error));
 
     this.getCurrency();
 
     this.$store.commit("loading", true);
     // ?vendor_type_id=" + 2
-    axios.get(this.base_url + "api/products")
-    .then((response) => {
-      this.$store.commit("loading", false);
-      this.products = response.data.data;
-      this.pagination = response.data
-    })
+    axios
+      .get(this.base_url + "api/products")
+      .then((response) => {
+        this.$store.commit("loading", false);
+        this.products = response.data.data;
+        this.pagination = response.data;
+      })
       .catch((error) => console.log(error));
   },
 
@@ -241,53 +276,53 @@ export default {
     },
 
     prevPage() {
-      if(this.showVendors == false)
-      {
-         this.$store.commit("loading", true)
-        this.pageNo--
-        axios.get(this.base_url + "api/products?page="+this.pageNo)
-        .then((response) => {
-          this.$store.commit("loading", false);
-          this.products = response.data.data;
-        })
-        
-      }else {
-        this.$store.commit("loading", true)
-        this.pageNo--
-        axios.get(this.base_url + "api/vendors?page="+this.pageNo)
-        .then((response) => {
-          this.$store.commit("loading", false);
-          this.vendors = response.data.data;
-        })
+      if (this.showVendors == false) {
+        this.$store.commit("loading", true);
+        this.pageNo--;
+        axios
+          .get(this.base_url + "api/products?page=" + this.pageNo)
+          .then((response) => {
+            this.$store.commit("loading", false);
+            this.products = response.data.data;
+          });
+      } else {
+        this.$store.commit("loading", true);
+        this.pageNo--;
+        axios
+          .get(this.base_url + "api/vendors?page=" + this.pageNo)
+          .then((response) => {
+            this.$store.commit("loading", false);
+            this.vendors = response.data.data;
+          });
       }
     },
 
     nextPage() {
-     if(this.showVendors == false)
-      {
-        this.$store.commit("loading", true)
-        this.pageNo++
-        axios.get(this.base_url + "api/products?page="+this.pageNo)
-        .then((response) => {
-          this.$store.commit("loading", false);
-          this.products = response.data.data;
-        })
-        
-      }else {
-        this.$store.commit("loading", true)
-        this.pageNo++
-        axios.get(this.base_url + "api/vendors?page="+this.pageNo)
-        .then((response) => {
-          this.$store.commit("loading", false);
-          this.vendors = response.data.data;
-        })
+      if (this.showVendors == false) {
+        this.$store.commit("loading", true);
+        this.pageNo++;
+        axios
+          .get(this.base_url + "api/products?page=" + this.pageNo)
+          .then((response) => {
+            this.$store.commit("loading", false);
+            this.products = response.data.data;
+          });
+      } else {
+        this.$store.commit("loading", true);
+        this.pageNo++;
+        axios
+          .get(this.base_url + "api/vendors?page=" + this.pageNo)
+          .then((response) => {
+            this.$store.commit("loading", false);
+            this.vendors = response.data.data;
+          });
       }
     },
-    
+
     getAllProducts() {
       this.showVendors = false;
       this.$store.commit("loading", true);
-    //   ?vendor_type_id=" + 2
+      //   ?vendor_type_id=" + 2
       axios
         .get(this.base_url + "api/products")
         .then((response) => {
@@ -296,11 +331,12 @@ export default {
           // console.log(this.products)
         })
         .catch((error) => console.log(error));
+      this.$router.push("/search?tab=products");
     },
 
     getAllVendors() {
       this.showVendors = true;
-    //   ?vendor_type_id=" + 2
+      //   ?vendor_type_id=" + 2
       this.$store.commit("loading", true);
       axios
         .get(this.base_url + "api/vendors")
@@ -310,6 +346,7 @@ export default {
           // console.log(this.vendors)
         })
         .catch((error) => console.log(error));
+      this.$router.push("/search?tab=vendors");
     },
 
     getSearchResult() {
@@ -353,3 +390,19 @@ export default {
   },
 };
 </script>
+
+
+<style>
+
+.cards{
+
+transition: all 0.2s ease;
+cursor: pointer;
+}
+
+.cards:hover{
+
+box-shadow: 5px 6px 6px 2px #e9ecef;
+transform: scale(1.1);
+}
+</style>
