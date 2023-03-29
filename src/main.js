@@ -112,6 +112,7 @@ axios.interceptors.request.use(
 );
 
 require("@/assets/scss/landingpage.scss");
+require("@/assets/scss/productPage.scss");
 
 // Add a response interceptor
 axios.interceptors.response.use(
