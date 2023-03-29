@@ -19,7 +19,7 @@
         </div>
         <div class="absolute inset-y-0 right-0 flex items-center pr-1 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <div class="hidden md:mx-2 md:block" v-if="this.$route.name == 'Home'">
-                <a href="/search" class="p-2 text-black">
+                <a href="/search?tab=products" class="p-2 text-black">
                   <span class="sr-only">Search</span>
                   <SearchIcon class="flex justify-center w-5 h-5 text-black" aria-hidden="true" />
                 </a>

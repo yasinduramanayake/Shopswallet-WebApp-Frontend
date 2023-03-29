@@ -3,7 +3,7 @@
 
     <div class="flex justify-between mb-10">
       <p class="text-2xl font-semibold text-gray-700">{{ $t('pages.bestselling') }}</p>
-      <a class="flex" href="/search">
+      <a class="flex" href="/search?tab=products">
         {{ $t('pages.seeall') }}
         <ArrowNarrowRightIcon class="w-2 h-2 ml-1 text-gray-400" aria-hidden="true" />
       </a>

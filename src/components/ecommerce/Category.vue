@@ -1,14 +1,14 @@
 <template>
-<div v-if="categories">
+<div v-if="categories" class="category-page">
   <vue-horizontal ref="horizontal" class="horizontal" responsive v-if="categories">
-    <div v-for="category in categories" :key="category.id" class="flex flex-row px-5">
+    <div v-for="category in categories" :key="category.id" class="flex flex-row px-4 category-inner">
       
       <a :href="$router.resolve({name: 'Category', params: { id: category.id, slug: sanitizeTitle(`${category.name}`) }}).href">
-        <div  class="flex items-center justify-center w-16 p-4 my-2 rounded-full md:h-16 " :style="{ 'background-color': category.color }">
+        <div  class="flex items-center justify-center p-4 my-2 rounded-full img-wrap" :style="{ 'background-color': category.color }">
             <img v-bind:src="category.photo" :alt="category.name" class="self-center w-10 h-10 mx-auto transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
         </div>
         <div class="p-1">
-          <p class="text-xs font-medium text-center text-black lowercase truncate">{{ truncate(category.name, 10) }}</p>
+          <p class="text-s font-medium text-center text-black lowercase truncate">{{ truncate(category.name, 10) }}</p>
           
         </div>
         
