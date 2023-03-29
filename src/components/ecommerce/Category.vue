@@ -1,25 +1,35 @@
 <template>
 <div v-if="categories">
   <vue-horizontal ref="horizontal" class="horizontal" responsive v-if="categories">
+    <div v-for="category in categories" :key="category.id" class="flex flex-row px-4">
+      <a :href="$router.resolve({name: 'Category', params: { id: category.id, slug: sanitizeTitle(`${category.name}`) }}).href" class="text-decoration-none border shadow rounded px-3 pt-3">
+        <div  class="flex items-center justify-center">
+            <div class="rounded-circle" style="background-image: url('/img/placeholder.jpg'); height: 100px; width: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+        </div>
+        <div class="p-1">
+          <p class="text-md font-medium text-center text-secondary truncate">{{ truncate(category.name, 10) }}</p>
+        </div>
+      </a>
+    </div> 
+  </vue-horizontal>
+
+  <!-- <vue-horizontal ref="horizontal" class="horizontal" responsive v-if="categories">
     <div v-for="category in categories" :key="category.id" class="flex flex-row px-5">
-      
       <a :href="$router.resolve({name: 'Category', params: { id: category.id, slug: sanitizeTitle(`${category.name}`) }}).href">
         <div  class="flex items-center justify-center w-16 p-4 my-2 rounded-full md:h-16 " :style="{ 'background-color': category.color }">
             <img v-bind:src="category.photo" :alt="category.name" class="self-center w-10 h-10 mx-auto transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">
         </div>
         <div class="p-1">
           <p class="text-xs font-medium text-center text-black lowercase truncate">{{ truncate(category.name, 10) }}</p>
-          
         </div>
-        
       </a>
     </div> 
-  </vue-horizontal>
+  </vue-horizontal> -->
 </div>
 </template>
 <script>
 import VueHorizontal from "vue-horizontal";
-import axios from 'axios'
+import axios from 'axios';
 export default {
   name: 'Category',
   components: {
