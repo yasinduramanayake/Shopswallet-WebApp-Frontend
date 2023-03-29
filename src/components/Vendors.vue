@@ -6,7 +6,7 @@
           <p class="pt-1 text-sm text-black">{{ $t('pages.vendorSubHeader2') }}</p>
         </div>
         
-        <a class="flex" href="/search">
+        <a class="flex" href="/search?tab=vendors">
             {{ $t('pages.seeall') }}
             <ArrowNarrowRightIcon class="w-4 h-4 ml-1 text-gray-400" aria-hidden="true" />
         </a>

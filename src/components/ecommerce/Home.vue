@@ -7,15 +7,15 @@
         <Category />
       </div>
 
-    <div class="mt-8 md:mt-20">
+    <div class="mt-8 md:mt-10">
       <FlashSale/>
     </div>
 
-    <div class="mt-8 md:mt-20">
+    <div class="mt-8 md:mt-10">
       <NewArrival/>
     </div>
 
-    <div class="mt-8 md:mt-20">
+    <div class="mt-8 md:mt-10">
       <BestSelling/>
     </div>
 

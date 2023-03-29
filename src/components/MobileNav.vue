@@ -15,7 +15,7 @@
             </a>
                 <!-- <div class="absolute inset-y-0 right-0 flex items-center pr-1 sm:static sm:inset-auto sm:ml-6 sm:pr-0"> -->
             <!-- <div class="flex hidden lg:mr-6 md:block"> -->
-              <a href="/search" class="p-2 text-white hover:text-gray-500">
+              <a href="/search?tab=products" class="p-2 text-white hover:text-gray-500">
                 <span class="sr-only">Search</span>
                 <SearchIcon class="w-5 h-5 font-thin" aria-hidden="true" />
               </a>
