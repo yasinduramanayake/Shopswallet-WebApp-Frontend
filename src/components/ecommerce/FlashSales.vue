@@ -8,7 +8,20 @@
         </a>
     </div>
     
-    <vue-horizontal ref="horizontal" class="horizontal" responsive>
+    <div class="row">
+      <div class="col-12">
+        <div class="border border-warning rounded text-dark p-3 lead" id="dv_flash_sales" style="text-align: justify;">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+      </div>  
+    </div>
+
+    <!-- <vue-horizontal ref="horizontal" class="horizontal" responsive>
       <div v-for="product in products" class="flex flex-row px-3">
         <a href="" class="border-warning border-2 rounded text-decoration-none text-center text-dark w-60 h-60">
           <div class="flex items-center justify-center">
@@ -19,7 +32,7 @@
           </div>
         </a>
       </div>
-    </vue-horizontal>
+    </vue-horizontal> -->
 
     <!-- <vue-horizontal ref="horizontal" class="horizontal" responsive v-if="products">
         
@@ -228,5 +241,9 @@ button:focus {
 .item {
   width: calc((100% - ((var(--count) - 1) * var(--gap))) / var(--count));
   margin-right: var(--gap);
+}
+
+#dv_flash_sales:hover {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
 }
 </style>
