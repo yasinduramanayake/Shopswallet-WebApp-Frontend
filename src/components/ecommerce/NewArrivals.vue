@@ -1,6 +1,6 @@
 <template>
   <div class="px-2">
-    <div class="flex justify-between mb-10">
+    <div class="flex justify-between mb-4" style="border-bottom: 3px solid #dee2e6;">
         <p class="text-2xl font-semibold text-gray-700">{{ $t('pages.newArrivals') }}</p>
          <a class="flex" href="/search?tab=products">
             {{ $t('pages.seeall') }}
@@ -8,7 +8,20 @@
         </a>
     </div>
     
-    <vue-horizontal ref="horizontal" class="horizontal" responsive v-if="products">
+    <vue-horizontal ref="horizontal" class="horizontal" responsive>
+      <div v-for="product in products" class="flex flex-row px-3">
+        <a href="" class="border-info border-2 rounded text-decoration-none text-center text-dark w-60 h-60">
+          <div class="flex items-center justify-center">
+            <div style="background-image: url('/img/placeholder.jpg'); height: 180px; width: 180px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+          </div>
+          <div class="mb-3">
+            Product
+          </div>
+        </a>
+      </div>
+    </vue-horizontal>
+
+    <!-- <vue-horizontal ref="horizontal" class="horizontal" responsive v-if="products">
         <div v-for="product in products" :key="product.id" class="flex flex-row px-5 mb-10">
           <a :href="$router.resolve({name: 'Product', params: { id: product.id, slug: sanitizeTitle(`${product.name}`) }}).href" class="w-60 h-68">
             <img  v-if="product" v-bind:src="product.photo" class="w-56 mx-auto transition duration-500 ease-in-out transform h-52 hover:-translate-y-1 hover:scale-100 rounded-t-xl">
@@ -47,7 +60,7 @@
             </div>
           </a>
         </div> 
-    </vue-horizontal>
+    </vue-horizontal> -->
     
   </div>
 </template>
@@ -62,7 +75,7 @@ export default {
   },
   data () {
     return {
-      products: null,
+      products: [1, 2, 3, 4, 5, 6],
       currency: null,
       hasPrev: false,
       hasNext: true,
@@ -78,7 +91,7 @@ export default {
 
     axios.get(this.base_url+'api/products?type=new&vendor_type_id='+this.$route.params.id)
     .then((response) => {
-      this.products = response.data.data
+      // this.products = response.data.data
     })
 
   },
