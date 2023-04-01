@@ -1,178 +1,410 @@
 <template>
-  <div class="pt-10 pb-5 bg-gray-50 vendor">
-    <!-- <div class="max-w-full ">
-       <img  v-if="vendor" v-bind:src="vendor.feature_image" class="w-full bg-center bg-contain" style="height: 450px">
-    </div> -->
-   
-    <div class="container px-5 mx-auto max-w-7xl" v-if="vendor">
-      <div class="mb-5">
-          <div class="flex flex-col md:space-x-5 md:flex-row">
-            <img  v-if="vendor" v-bind:src="vendor.logo" class="rounded-md w-14 h-14">
-            <div>
-              <div class="flex flex-col ">
-                <div class="flex md:flex-row">
-                  <div class="flex flex-row space-x-5">
-                    <p class="self-center font-big md:text-5xl sm:mt-0 leading-large ">{{ vendor.name }}</p>
-                    <p class="flex py-3">
-                      <span class="flex p-1 space-x-1 bg-white border rounded-md">
-                        <starIcon class="self-center w-4 h-4 text-yellow-400" aria-hidden="true" />
-                        <p class="text-xs font-semibold">{{ vendor.rating }}</p>
-                      </span>
-                    </p>
-                    <div v-if="vendor.vendor_type.slug == 'pharmacy'" class="flex items-center ">
-                      <div v-if="settings" class="p-1 rounded-md" :style="{ 'background-color': settings.colors.primaryColor }">
-                        <a :href="$router.resolve({name: 'UploadPrescription', params: { id: vendor.id, slug: sanitizeTitle(`${vendor.name}`) }}).href">
-                          <UploadIcon class="w-4 h-4 text-white" aria-hidden="true" />
-                        </a>
-                      </div>
-                    </div>
-                    
-                  </div>
-                  
-                  
-                </div>
-                  
-                  <!-- <div class="container p-5 mx-auto"> -->
-                    <!-- <div class="sticky inset-x-0 md:hidden" v-if="settings">
-                      <a href="" class="absolute bottom-0 right-0 flex p-1 space-x-2 text-sm text-white rounded-full w-44" :style="{ 'background-color': settings.colors.primaryColor }" v-if="vendor.vendor_type_id == 4"><PlusCircleIcon class="self-center w-6 h-6 rounded-full " aria-hidden="true" /><span>Upload Prescription</span></a>
-                    </div> -->
-                  <!-- </div> -->
-                  <div class="flex flex-col md:space-x-3 md:flex-row ">
-                    <!-- <p class="flex py-3">
-                      <span class="font-light " v-for="star in vendor.rating" :key="star.id">
-                        <starIcon {{ star }} class="self-center w-3 h-3 text-yellow-400 md:mt-0 md:w-6 md:h-6" aria-hidden="true" />
-                      </span>
-                    </p> -->
-                
-                    <p class="flex py-3 font-light">
-                      <LocationMarkerIcon class="self-center w-4 h-4 text-black" aria-hidden="true" />
-                      <span class="px-1 text-sm font-light text-black">{{ vendor.address }}</span>
-                    </p>
-                    <p class="flex py-3 font-light">
-                      <PhoneIcon class="self-center w-4 h-4 text-black" aria-hidden="true" />
-                      <span class="px-1 text-sm font-light text-black">{{ vendor.phone }}</span>
-                    </p>
-                    <p class="flex py-3 font-light">
-                      <MailIcon class="self-center w-4 h-4 text-black" aria-hidden="true" />
-                      <span class="px-1 text-sm font-light text-black">{{ vendor.email }}</span>
-                    </p>
-                  </div>
-                  
-              </div>
-              <div class="flex flex-col text-black md:space-x-5 md:flex-row" v-if="settings">
-                <p class="mb-2 text-sm font-light" >Min Order: {{ currency }}{{ vendor.min_order ? vendor.min_order : '0.00'}}</p>
-                <p class="mb-2 text-sm font-light">Max Order: {{ currency }}{{ vendor.max_order ? vendor.max_order : '0.00'}}</p>
-                
-                <span class="w-16 px-2 py-1 mb-2 text-sm text-center text-black bg-gray-100 rounded-md shadow-sm" v-if="vendor.is_open">Opened</span>
-                <span class="w-16 px-2 py-1 mb-2 text-sm text-center text-black bg-gray-100 rounded-md shadow-sm" v-else>Closed</span>
-                <span class="w-16 px-2 py-1 mb-2 text-sm text-center text-black bg-gray-100 rounded-md shadow-sm" v-if="vendor.pickup == 1">Pickup</span>
-                <span class="w-16 px-2 py-1 mb-2 text-sm text-center text-black bg-gray-100 rounded-md shadow-sm" v-if="vendor.delivery == 1">Delivery</span>
-                <!-- :style="{ 'background-color': settings.colors.deliveryColor }" -->
-              </div>
-              <div class="flex" v-if="vendor.prepare_time">
-                <div class="flex items-center mt-1 mr-5" v-if="settings">
-                  <ClockIcon class="w-4 h-4 mr-1" :style="{ 'color': settings.colors.deliveredColor }" aria-hidden="true" />
-                  <p class="text-xs font-light" :style="{ 'color': settings.colors.deliveredColor }">{{ vendor.prepare_time}} mins</p>
-                </div>
-                <div class="flex items-center mt-1" v-if="settings">
-                    <LightningBoltIcon class="w-4 h-4 mr-1" :style="{ 'color': settings.colors.deliveredColor }" aria-hidden="true" />
-                    <p class="text-xs font-light" :style="{ 'color': settings.colors.deliveredColor }">{{ vendor.delivery_time}} mins</p>
-                </div>
-              </div>
-              <p class="mt-2 text-sm text-black">{{ vendor.description }}</p>
-            </div>
-            
-          </div>
-        
-        
-        <MenuTab/>
-        
-      </div>
-    </div>
-    <!-- footer -->
-    <!-- <Footer/> -->
-  </div>
-  <Download/>
-  <!-- <div class="container p-5 mx-auto">
-    <div class="relative md:hidden" v-if="settings">
-      <a href="" class="absolute bottom-0 right-0 flex p-1 space-x-2 text-sm text-white rounded-full w-44" :style="{ 'background-color': settings.colors.primaryColor }" v-if="vendor.vendor_type_id == 4"><PlusCircleIcon class="self-center w-6 h-6 rounded-full " aria-hidden="true" /><span>Upload Prescription</span></a>
-    </div>
-  </div> -->
-  
+	<div class="pt-10 pb-5 bg-gray-50 vendor">
+		<div class="container px-5 mx-auto max-w-7xl" v-if="vendor">
+			<div class="row">
+				<div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2">
+					<div class="mb-4">
+						<a href="#" class="text-decoration-none text-dark btn btn-lg w-100" style="background-color: #eceff3;">
+							All shops
+						</a>
+					</div>
+					<div>
+						<div class="fw-bold fs-5 mb-3">Category</div>
+						<div class="mb-3">
+							<a href="#" class="text-decoration-none text-muted fs-5">
+								Category 01
+							</a>
+						</div>
+						<div class="mb-3">
+							<a href="#" class="text-decoration-none text-muted fs-5">
+								Category 02
+							</a>
+						</div>
+						<div class="mb-3">
+							<a href="#" class="text-decoration-none text-muted fs-5">
+								Category 03
+							</a>
+						</div>
+						<div class="mb-3">
+							<a href="#" class="text-decoration-none text-muted fs-5">
+								Category 04
+							</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 col-xxl-10">
+					<div class="row mb-3">
+						<div class="col-12 col-sm-12 col-md-12 col-lg-10 col-xl-10 col-xxl-10">
+							<div class="flex flex-row">
+								<div class="pe-4 align-self-center">
+									<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+									  <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+									</svg>
+								</div>
+								<div>
+									<div class="fs-1 fw-bolder">
+										{{ vendor.name }}
+									</div>
+									<div style="text-align: justify;">
+										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore magna aliqua.
+									</div>
+									<div>
+										<a href="#" class="text-dark me-3">More info</a>
+										<a href="#" class="text-dark me-3">Schedule</a>
+										<a href="#" class="text-dark me-3">Recipes</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-12 col-sm-12 col-md-12 col-lg-2 col-xl-2 col-xxl-2 d-flex justify-content-end">
+							<button class="me-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+								  <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+								</svg>
+							</button>
+							<button class="me-4">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
+								  <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5z"/>
+								</svg>
+							</button>
+							<button>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
+								  <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+								</svg>
+							</button>
+						</div>
+					</div>
+
+					<div class="row mb-5">
+						<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
+							<div class="flex justify-content-center align-self-center border px-2 pt-2 pb-2">
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-clock me-2 mb-1" viewBox="0 0 16 16" style="display: unset;">
+									  <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+									  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+									</svg>
+									Working time: <span class="fw-bold">01:00 — 21:00</span>
+								</div>
+
+								<div class="align-self-center mx-4">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dot text-muted" viewBox="0 0 16 16">
+									  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+									</svg>
+								</div>
+
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-star-fill me-2 mb-1 text-warning" viewBox="0 0 16 16" style="display: unset;">
+									  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+									</svg>
+									5.0
+								</div>
+
+								<div class="align-self-center mx-4">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dot text-muted" viewBox="0 0 16 16">
+									  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+									</svg>
+								</div>
+
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-exclamation me-2 mb-1 text-warning" viewBox="0 0 16 16" style="display: unset;">
+									  <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm.256 7a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"/>
+									  <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 0-.5.5v1.5a.5.5 0 0 0 1 0V11a.5.5 0 0 0-.5-.5Zm0 4a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1Z"/>
+									</svg>
+									11-55 min
+								</div>
+
+								<div class="align-self-center mx-4">
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-dot text-muted" viewBox="0 0 16 16">
+									  <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+									</svg>
+								</div>
+
+								<div>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-text me-2 mb-1" viewBox="0 0 16 16" style="display: unset;">
+									  <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+									  <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/>
+									</svg>
+									Delivery — <span class="fw-bold">$1.00</span>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12" style="background-color: #eceff3;">
+							<div class="px-3 py-4">
+								<div class="fs-3 mb-3">Express</div>
+
+								<div class="row">
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="px-3 py-4">
+								<div class="fs-3 mb-3">Beverages</div>
+
+								<div class="row">
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="px-3 pt-4 pb-5">
+								<div class="fs-3 mb-3">Baby formula</div>
+
+								<div class="row">
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3">
+										<div class="bg-white px-3 pb-3 rounded">
+											<div style="background-image: url('/img/placeholder.jpg'); width: auto; height: 100px; background-repeat: no-repeat; background-position: center; background-size: contain;"></div>
+											<div class="fw-bold text-center">
+												Product
+											</div>
+											<div class="text-muted mb-3" style="text-align: justify; font-size: 12px;">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+											</div>
+											<div class="fw-bold text-muted">
+												$60.00
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
-// @ is an alias to /src
-import axios from 'axios'
-// import Footer from '@/components/Footer.vue'
-import MenuTab from '@/components/MenuTab.vue'
-import Download from '@/components/Downloads.vue'
-// import { LocationMarkerIcon, PhoneIcon, MailIcon, PlusCircleIcon } from '@heroicons/vue/outline'
-import { StarIcon, LocationMarkerIcon, PhoneIcon, MailIcon, PlusCircleIcon, UploadIcon, LightningBoltIcon, ClockIcon } from '@heroicons/vue/solid'
+	// @ is an alias to /src
+	import axios from 'axios'
+	// import Footer from '@/components/Footer.vue'
+	import MenuTab from '@/components/MenuTab.vue'
+	import Download from '@/components/Downloads.vue'
+	// import { LocationMarkerIcon, PhoneIcon, MailIcon, PlusCircleIcon } from '@heroicons/vue/outline'
+	import { StarIcon, LocationMarkerIcon, PhoneIcon, MailIcon, PlusCircleIcon, UploadIcon, LightningBoltIcon, ClockIcon } from '@heroicons/vue/solid'
 
-export default {
-  name: 'vendor',
-  components: {
-    // Footer,
-    Download,
-    MenuTab,
-    LocationMarkerIcon,
-    StarIcon,
-    PhoneIcon,
-    MailIcon,
-    PlusCircleIcon,
-    UploadIcon,
-    LightningBoltIcon, 
-    ClockIcon
-  },
-  data () {
-    return {
-      vendor: null,
-      currency: null,
-      base_url: this.$store.state.baseUrl,
-      settings: null
-    }
-  },
-  mounted () {
-    
-    this.$store.commit('loading', true)
-    axios.get(this.base_url+'api/vendors/' + this.$route.params.id)
-    .then((response) => {
-      this.$store.commit('loading', false)
-      this.vendor = response.data
-    })
-    .catch(error => console.log(error))
+	export default {
+	  name: 'vendor',
+	  components: {
+	    // Footer,
+	    Download,
+	    MenuTab,
+	    LocationMarkerIcon,
+	    StarIcon,
+	    PhoneIcon,
+	    MailIcon,
+	    PlusCircleIcon,
+	    UploadIcon,
+	    LightningBoltIcon, 
+	    ClockIcon
+	  },
+	  data () {
+	    return {
+	      vendor: null,
+	      currency: null,
+	      base_url: this.$store.state.baseUrl,
+	      settings: null
+	    }
+	  },
+	  mounted () {
+	    
+	    this.$store.commit('loading', true)
+	    axios.get(this.base_url+'api/vendors/' + this.$route.params.id)
+	    .then((response) => {
+	      this.$store.commit('loading', false)
+	      this.vendor = response.data
+	    })
+	    .catch(error => console.log(error))
 
-    axios.get(this.base_url+'api/app/settings')
-      .then((response) => {
-        this.settings = response.data
-        this.currency = this.settings.strings.currency
-      })
-      .catch(error => console.log(error))
-  },
+	    axios.get(this.base_url+'api/app/settings')
+	      .then((response) => {
+	        this.settings = response.data
+	        this.currency = this.settings.strings.currency
+	      })
+	      .catch(error => console.log(error))
+	  },
 
-  methods: {
-    sanitizeTitle(title) {
-      var slug = "";
-      // Change to lower case
-      var titleLower = title.toLowerCase();
-      // Letter "e"
-      slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
-      // Letter "a"
-      slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
-      // Letter "o"
-      slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
-      // Letter "u"
-      slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
-      // Letter "d"
-      slug = slug.replace(/đ/gi, 'd');
-      // Trim the last whitespace
-      slug = slug.replace(/\s*$/g, '');
-      // Change whitespace to "-"
-      slug = slug.replace(/\s+/g, '-');
-      
-      return slug;
-    },
-  }
-}
+	  methods: {
+	    sanitizeTitle(title) {
+	      var slug = "";
+	      // Change to lower case
+	      var titleLower = title.toLowerCase();
+	      // Letter "e"
+	      slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e');
+	      // Letter "a"
+	      slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a');
+	      // Letter "o"
+	      slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o');
+	      // Letter "u"
+	      slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u');
+	      // Letter "d"
+	      slug = slug.replace(/đ/gi, 'd');
+	      // Trim the last whitespace
+	      slug = slug.replace(/\s*$/g, '');
+	      // Change whitespace to "-"
+	      slug = slug.replace(/\s+/g, '-');
+	      
+	      return slug;
+	    },
+	  }
+	}
 </script>
+
+<style>
+	
+</style>
