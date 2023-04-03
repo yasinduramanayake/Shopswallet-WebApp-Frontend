@@ -469,7 +469,7 @@
                   <li>Pant features an expandable waist, pleated front, rear welted pockets, and French fly with button</li>
                 </ul>
               </div>
-              <div class="tab-pane fade show active" id="video-tab-pane" role="tabpanel" aria-labelledby="video-tab" tabindex="0">
+              <div class="tab-pane fade" id="video-tab-pane" role="tabpanel" aria-labelledby="video-tab" tabindex="0">
                 <iframe class="mt-3" style="width: 100%; height: 500px;" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
               </div>
             </div>
@@ -702,6 +702,7 @@ export default {
   },
   data() {
     return {
+      product: null,
       products: [1, 2, 3, 4, 5, 6],
       service: null,
       currency: null,
